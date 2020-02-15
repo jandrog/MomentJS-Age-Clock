@@ -11,6 +11,7 @@
 <body>
   <div class="countdown"></div>
   <script type="text/javascript">
+
     window.birthday = prompt('What is your birthday? MM/DD/YYYY')
     // invoke displayAge once
     displayAge()
@@ -21,7 +22,14 @@
       Use moment() to create a new moment object from the present time
       Fix this function to display someone's exact age
       */
-      document.querySelector('.countdown').innerHTML = moment()
+
+      var dob = window.birthday.split('/');
+      dob.reverse();
+      dob = dob.join('-');
+
+      var result = moment.preciseDiff(moment(dob, 'YYYY-MM-DD HH:mm:ss'), moment());
+
+      document.querySelector('.countdown').innerHTML = result;
     }
   </script>
 </body>
